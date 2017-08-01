@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion project.COMPILE_SDK
+    buildToolsVersion project.BUILD_TOOL
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.TARGET_SDK
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'com.android.support:design:26.0.0-alpha1'
+}
+
+ext {
+    bintrayRepo = 'SmartWizard'
+    bintrayName = 'Slidr'
+    orgName = 'boomsya'
+
+    publishedGroupId = 'com.github.boomsya'
+    libraryName = 'Slidr'
+    artifact = 'slidr'
+
+    libraryDescription = 'Slidr'
+
+    siteUrl = 'https://github.com/boomsya/-Slidr'
+    gitUrl = 'https://github.com/boomsya/-Slidr.git'
+
+    libraryVersion = rootProject.ext.libraryVersion
+
+    developerId = 'boomsya'
+    developerName = 'boomsya'
+    developerEmail = 'boomsya@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+
+apply from: rootProject.file('gradle/install-v1.gradle')
+apply from: rootProject.file('gradle/bintray-android-v1.gradle')
